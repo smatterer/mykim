@@ -7,36 +7,23 @@ $params = array_merge(
 );
 
 return [
-    'id' => 'app-backend',
+    'id' => 'app-mobileend',
     'basePath' => dirname(__DIR__),
-    'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+//    'controllerNamespace' => 'backend\controllers',
+    'controllerNamespace' => 'mobileend\controllers',
     'components' => [
-        //共域冲突，设置admin路径，但是登录后无法退出
-        //冲突时，前台登录后，再打开后台页面也会登录（cookie相同的话）
         'request' => [
-            'csrfParam' => '_csrf-backend',
-            'csrfCookie' => [
-//                'path' => '/admin',
-                'httpOnly' => true,
-            ],
+            'csrfParam' => '_csrf-mobileend',
         ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
-            'identityCookie' => [
-                'name' => '_identity-backend', 
-//                'path' => '/admin',
-                'httpOnly' => true
-            ],
+            'identityCookie' => ['name' => '_identity-mobileend', 'httpOnly' => true],
         ],
         'session' => [
-            // this is the name of the session cookie used for login on the backend
-            'name' => 'advanced-backend',
-            'cookieParams' => [
-//                'path' => '/admin',
-            ],
+            // this is the name of the session cookie used for login on the mobileend
+            'name' => 'advanced-mobileend',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

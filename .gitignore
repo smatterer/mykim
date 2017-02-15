@@ -34,3 +34,4 @@ phpunit.phar
 # vagrant runtime
 /.vagrant
 assets
+/代码托管git-github.com.txt
